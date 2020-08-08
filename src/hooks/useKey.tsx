@@ -10,7 +10,6 @@ function useKey(key: string) {
     
     // Bind and unbind events
     useEffect(() => {
-        console.log('effect ran')
         const match = (event: Event) => {
             return key.toLowerCase() === (event as any).key.toLowerCase()
         }
