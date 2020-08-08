@@ -43,6 +43,7 @@ function App() {
         <p>{up-down}</p>
         <p>{right-left}</p>
         <p>{secs.toFixed(2)}</p>
+        <button onClick={()=>{board.current=(new game(20,20));setSecs(0);setPrevSecs(0)}} >New game</button>
       </header>
     </div>
   );

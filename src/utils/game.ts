@@ -37,7 +37,10 @@ export default class game {
     }
 
     update(inputDirection:[number,number]){
-        console.log('updated')
+        if(this.snakeIsDead===true){
+            return
+        }
+
         this.snake.updateDirection(inputDirection)
         const canEat = this.snake.canEat(this.apple)
         if(this.snake.willDie(this.size)){
