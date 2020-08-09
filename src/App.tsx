@@ -25,11 +25,15 @@ function App() {
   const [prevSecs, setPrevSecs] = useState(0)
   const [secs, setSecs] = useState(0)
   const [pause, setPause] = useState(false)
+  const [dead, setDead] = useState(false)
   const renderBoard = makeGameBoard(board.current.snake.points,board.current.apple,board.current.snakeIsDead)
 
   useEffect(() => {
     if(secs>prevSecs+1/board.current.speed){
       board.current.update([down-up,right-left])
+      if(board.current.snakeIsDead){
+        setDead(true);
+      }
       setPrevSecs(ps=>ps+1/board.current.speed)
     }
   },[secs, prevSecs, up, down, right, left])
@@ -37,12 +41,12 @@ function App() {
   useEffect(() => {
     console.log('timeout set')
     const interval = setInterval(() => {
-      if(pause===false){
+      if(pause===false&&dead===false){
         setSecs(seconds => seconds + 0.01);
       }
     }, 10);
     return () => clearInterval(interval);
-  }, [pause]);
+  }, [pause,dead]);
 
   return (
     <div >
@@ -52,7 +56,7 @@ function App() {
           <br/>
           <span>{secs.toFixed(2)}</span>
           <br/>
-          <button onClick={()=>{board.current=(new game(20,20));setSecs(0);setPrevSecs(0)}} >New game</button>
+          <button onClick={()=>{board.current=(new game(20,20));setSecs(0);setPrevSecs(0);setDead(false);setPause(false)}} >New game</button>
           <button onClick={()=>setPause(p=>!p)} >Pause</button>
           <div style={{backgroundColor:'blue'}}>
           {renderBoard.map(l=>l.concat(<br></br>))}

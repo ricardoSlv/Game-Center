@@ -35,7 +35,7 @@ export default class snake {
            this.points=this.points.slice(0,-1);
         }
         else{
-            this.length++
+            this.length++;
         }
     }
 
