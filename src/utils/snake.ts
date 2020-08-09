@@ -39,11 +39,12 @@ export default class snake {
         }
     }
 
-    willDie([sizeX,sizeY]:[number,number]){
+    willDie([sizeX,sizeY]:[number,number],bricks:point[]){
         const [headX,headY]=addPoints(this.points[0],this.moveVector)
 
         return  (headX>=sizeX||headY>=sizeY||headX<0||headY<0||
-                this.points.some(([px,py])=>px===headX&&py===headY))
+                this.points.some(([px,py])=>px===headX&&py===headY)||
+                bricks.some(([px,py])=>px===headX&&py===headY))
     }
 
     canEat([appleX,appleY]:point){
