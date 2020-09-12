@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Welcome from './pages/Welcome/Welcome'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-    <App />,
+    <Welcome />,
   document.getElementById('root')
 );
 
