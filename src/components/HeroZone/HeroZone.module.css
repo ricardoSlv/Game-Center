@@ -1,0 +1,33 @@
+.header{
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: snow;
+    font-size: 3rem;
+}
+
+.heroTitle{
+    font-weight: 400;
+    margin: 0px;
+    padding: 0 1em;
+    letter-spacing: 0.3ch;
+}
+
+.heroDesc{
+    font-weight: 300;
+    margin: 0px;
+    padding: 0 1em;
+    font-size: 0.7em;
+}
+
+.iconFlex{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.iconFlex > * {
+    margin: 2rem;
+}

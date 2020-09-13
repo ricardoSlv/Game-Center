@@ -9,6 +9,6 @@
     width: 100%;
     height: calc(100% + 10vh);
     background: linear-gradient(135deg,#330867,#31a7bb);
-    transform: skewY(-5deg);
+    /* transform: skewY(-5deg); */
     z-index: -1;
 }

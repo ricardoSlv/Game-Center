@@ -1,14 +1,17 @@
 import React from 'react'
+import BackGround from '../../components/Background/Background'
+import NavBar from '../../components/NavBar/NavBar'
+import HeroZone from '../../components/HeroZone/Herozone'
 
-import HeroButton from '../../components/HeroButon/HeroButton'
 import styles from './Welcome.module.css'
-
 
 export default function Welcome() {
     return (
-        <>
-            <div className={styles.background} />
-            <HeroButton text={'Hit me now'}/>
-        </>
+        <section className={styles.welcomePage}>
+            <BackGround />  
+            <NavBar/>
+            <HeroZone/>
+            {/* <HeroButton text={'Hit me now'}/> */}
+        </section>
     )
 }
