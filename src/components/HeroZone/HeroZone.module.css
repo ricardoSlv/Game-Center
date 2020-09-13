@@ -12,7 +12,7 @@
     font-weight: 400;
     margin: 0px;
     padding: 0 1em;
-    letter-spacing: 0.3ch;
+    letter-spacing: 0.2ch;
 }
 
 .heroDesc{
@@ -22,12 +22,16 @@
     font-size: 0.7em;
 }
 
-.iconFlex{
+.sideFlex{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.iconFlex > * {
+.margTop{
+    margin-top:1rem
+}
+
+.sideFlex > * {
     margin: 2rem;
 }

@@ -32,6 +32,8 @@
     height: 2.5rem;
     color: snow;
     font-size: 1.1rem;
+    letter-spacing: 0.2ch;
+    font-weight: 400;
 }
 
 .out{
@@ -41,12 +43,12 @@
 
 .hover{
     overflow: hidden;
-    line-height: 2.5rem;
     background-color: snow;
     transform: translateX(-100%);
 }
 
 .inner{
+    line-height: 2.5rem;
     color: #3473a0;
     transform: translateX(100%);
 }
