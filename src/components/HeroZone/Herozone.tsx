@@ -20,7 +20,7 @@ export default function Herozone() {
                     <PacManIcon />
                 </a>
             </div>
-            <h2 className={styles.heroDesc} >They kind off work but sometimes they don't</h2>
+            <h2 className={styles.heroDesc} >They kind of work but sometimes they don't</h2>
             <div className={styles.sideFlex+' '+styles.margTop}>
                 <HeroButton text="Login"/>
                 <HeroButton text="Signup"/>

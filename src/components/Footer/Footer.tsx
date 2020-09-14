@@ -8,7 +8,7 @@ export default function Footer() {
     return (
         <footer className={styles.footer}>
             <div className={styles.sideFlex}>
-                <NavItem text='Features' href='#features'/>
+                <NavItem text='Games' href='#games'/>
                 <NavItem text='Get Started' href='#get-started'/>
                 <NavItem text='Account?' href='#account'/>
                 <span>Made with React</span>

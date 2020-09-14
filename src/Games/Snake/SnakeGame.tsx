@@ -1,12 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-import useInputBuffer from './hooks/useInputBuffer'
+import useInputBuffer from '../../hooks/useInputBuffer'
 import game from './utils/game'
 
-import styles from './App.module.css'
+import styles from './SnakeGame.module.css'
 
 type point = [number, number]
 type color = 'Green' | 'Red' | 'Blue' | 'Orange' | 'Snow' | 'Black' | 'Brown' | 'Gray'
+
+const snakeMapsNumber = 4
+function nexMap(map:number){
+  return (map+1)%(snakeMapsNumber)
+}
 
 function Square({ color, text }: { color: color, text: string }) {
   const backClass = `back${color}`
@@ -39,24 +44,33 @@ function makeGameBoard(game: game) {
   return board
 }
 
-function App() {
-  let [up, down, left, right] = useInputBuffer().map(x => x ? 1 : 0)
-  const board = useRef((new game(20, 20)))
+function SnakeGame() {
+  const [Id, setId] = useState(0)
+  let [up, down, left, right] = useInputBuffer(Id)
+  const [map, setMap] = useState(0)
+  const board = useRef((new game(map)))
   const [prevSecs, setPrevSecs] = useState(0)
   const [secs, setSecs] = useState(0)
   const [pause, setPause] = useState(false)
   const [dead, setDead] = useState(false)
+  const [highScore, setHighScore] = useState([0,0,0,0])
   const renderBoard = makeGameBoard(board.current)
 
   useEffect(() => {
-    if (secs > prevSecs + 1 / board.current.speed) {
-      board.current.update([down - up, right - left])
+    if (secs > prevSecs + 1 / board.current.speed) { 
+        board.current.update([down - up, right - left])
+      const currScore=board.current.snake.length-1
+      if (currScore > highScore[map]) {
+        let newhighScore=[...highScore]
+        newhighScore[map]=currScore
+        setHighScore(newhighScore)
+      }
       if (board.current.snakeIsDead) {
         setDead(true);
       }
       setPrevSecs(ps => ps + 1 / board.current.speed)
     }
-  }, [secs, prevSecs, up, down, right, left])
+  }, [secs, prevSecs, up, down, right, left, highScore,map])
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -82,22 +96,38 @@ function App() {
           </div>}
       </div>
       <div className={styles.sideBar}>
-        <span>{`Current score: ${board.current.snake.length}`}</span>
-        <br />
-        <span>{secs.toFixed(2)}</span>
-        <br />
-        <button onClick={() => {
-          board.current = (new game(20, 20));
-          setSecs(0); setPrevSecs(0);
-          setDead(false);
-          setPause(false)
-        }}
+        <p className={styles.gameInfo}>{`Map: ${map+1}`}</p>
+        <p className={styles.gameInfo}>{`Highscore: ${highScore[map]}`}</p>
+        <p className={styles.gameInfo}>{`Current score: ${board.current.snake.length-1}`}</p>
+        <p className={styles.gameInfo}>{secs.toFixed(0)}</p>
+        <button className={styles.button}
+                onClick={()=>{
+                  const nextMap=nexMap(map)
+                  setMap(nextMap)
+                  board.current = (new game(nextMap));
+                  setId(Id+1)
+                  setSecs(0); setPrevSecs(0);
+                  setDead(false);
+                  setPause(false)
+                }}>
+          Next Map
+        </button>
+        <button className={styles.button}
+          onClick={() => {
+            board.current = (new game(map));
+            setId(Id+1)
+            setSecs(0); setPrevSecs(0);
+            setDead(false);
+            setPause(false)
+          }}
         >
           New game
-            </button>
-        <button onClick={() => { if (!dead) { setPause(p => !p) } }} >
+        </button>
+        <button className={styles.button+' '+(board.current.snakeIsDead?styles.greyFilter:'')}
+          onClick={() => { if (!dead) { setPause(p => !p) } }} >
           Pause
-            </button>
+        </button>
+        
         <div className={styles.arrowContainer}>
           <span className={styles.arrowBox} />
           <span className={`${styles.arrowBox} ${up ? styles.backBlack : styles.backGray}`}>⬆</span>
@@ -112,4 +142,4 @@ function App() {
   );
 }
 
-export default App;
+export default SnakeGame;

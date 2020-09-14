@@ -1,15 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 import Layout from './components/Layout/Layout';
 import Welcome from './pages/Welcome/Welcome'
+import SnakeGame from './Games/Snake/SnakeGame'
 
 ReactDOM.render(
-  <Layout >
-    <Welcome />
-  </Layout>,
+  <Router>
+    <Layout >
+      <Switch>
+        <Route path="/snake">
+          <SnakeGame />
+        </Route>
+        <Route path="/">
+          <Welcome />
+        </Route>
+      </Switch>
+    </Layout>
+  </Router>
+  ,
   document.getElementById('root')
 );
 
