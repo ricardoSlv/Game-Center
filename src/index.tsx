@@ -11,7 +11,7 @@ import * as serviceWorker from './serviceWorker';
 
 import Layout from './components/Layout/Layout';
 import Welcome from './pages/Welcome/Welcome'
-import SnakeGame from './Games/Snake/SnakeGame'
+import SnakeGame from './games/Snake/SnakeGame'
 
 ReactDOM.render(
   <Router>
