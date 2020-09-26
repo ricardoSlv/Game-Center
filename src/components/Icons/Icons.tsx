@@ -3,7 +3,7 @@ import React from 'react'
 import styles from './Icons.module.css'
 
 
-export function SnakeIcon() {
+export function SnakeIcon(props:{scale:number}) {
     return (
         //https://www.flaticon.com/free-icon/snake_616487
         //From https://www.freepik.com/
@@ -13,9 +13,9 @@ export function SnakeIcon() {
                 x="0px"
                 y="0px"
                 viewBox="0 0 512 512"
-                height="140"
-                width="140"
-                enable-background="new 0 0 512 512;" >
+                height={`${props.scale*140}`}
+                width={`${props.scale*140}`}
+                enableBackground="new 0 0 512 512;" >
                 <path fill="#FF8087" d="M95.332,105.225c-2.594-3.661-7.664-4.538-11.321-1.952l-54.087,38.169h-21.8
             c-4.49,0-8.124,3.638-8.124,8.124c0,4.487,3.634,8.124,8.124,8.124h13.099l-4.554,13.678c-1.42,4.256,0.881,8.858,5.133,10.278
             c0.857,0.286,1.722,0.42,2.571,0.42c3.404,0,6.569-2.154,7.704-5.558l7.282-21.845l54.014-38.118
@@ -48,106 +48,48 @@ export function SnakeIcon() {
             c24.984,58.386,130.466,10.523,130.428,8.676C203.273,101.279,185.501,97.386,165.868,104.884z"/>
                 <path fill="#4B3F4E" d="M144.204,94.34c-5.609,0-10.155-4.546-10.155-10.155v-8.124c0-5.609,4.546-10.155,10.155-10.155
             s10.155,4.546,10.155,10.155v8.124C154.359,89.794,149.813,94.34,144.204,94.34z"/>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
             </svg>
         </div>
     )
 }
 
-export function TetrisIcon() {
+export function TetrisIcon(props:{scale:number}) {
     return (
         //https://www.flaticon.com/free-icon/tetris_404362?term=tetris&page=2&position=2
         //From https://www.freepik.com/
         <div className={styles.greyFilter}>
             <svg version="1.1"
-                id="Layer_1"
                 xmlns="http://www.w3.org/2000/svg"
-                height="130"
-                width="130"
+                height={`${props.scale*130}`}
+                width={`${props.scale*130}`}
                 x="0px"
                 y="0px"
                 viewBox="0 0 512 512"
-                enable-background="new 0 0 512 512;" >
+                enableBackground="new 0 0 512 512;" >
                 <polygon fill="#FBAC50" points="307.2,409.6 307.2,307.2 204.8,307.2 204.8,204.8 102.4,204.8 102.4,102.4 0,102.4 0,512 
 	409.6,512 409.6,409.6 "/>
                 <polygon fill="#C7EAF0" points="204.8,307.2 204.8,204.8 102.4,204.8 102.4,307.2 0,307.2 0,409.6 307.2,409.6 307.2,307.2 
 	"/>
                 <rect y="409.6" fill="#FF648D" width="409.6" height="102.4" />
                 <polygon fill="#FD4D21" points="409.6,102.4 409.6,0 307.2,0 307.2,204.8 409.6,204.8 409.6,307.2 512,307.2 512,102.4 " />
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
             </svg>
         </div >
     )
 }
 
-export function PacManIcon() {
+export function PacManIcon(props:{scale:number}) {
     return (
         //https://svgsilh.com/image/151558.html
         <div className={styles.greyFilter}>
-            <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-                width="160" height="140" viewBox="0 0 1280.000000 936.000000"
+            <svg version="1.0" 
+                xmlns="http://www.w3.org/2000/svg"
+                width={`${props.scale*160}`} 
+                height={`${props.scale*140}`} 
+                viewBox="0 0 1280.000000 936.000000"
                 preserveAspectRatio="xMidYMid meet">
                 <metadata>
                     Created by potrace 1.15, written by Peter Selinger 2001-2017
-            </metadata>
+                </metadata>
                 <g transform="translate(0.000000,936.000000) scale(0.100000,-0.100000)"
                     fill="#ffee00" stroke="none">
                     <path d="M4365 9350 c-498 -38 -961 -143 -1415 -322 -173 -68 -518 -240 -683

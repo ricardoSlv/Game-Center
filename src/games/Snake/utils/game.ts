@@ -84,7 +84,6 @@ export default class game {
             this.speed = this.speed + 1;
         }
         this.snake.move(canEat);
-        console.log(this.apple, this.bricks)
     }
 
     generateApple(): void {

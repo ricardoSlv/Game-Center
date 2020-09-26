@@ -1,0 +1,40 @@
+.wrapper{
+    margin: 2rem 0;
+    border-radius: 8px;
+    padding: 2rem;
+    border: 3px solid snow;
+}
+
+.nameInput{
+    margin: 1rem 1rem 0 1rem;
+    font-size: 3rem;
+    text-align: center;
+    background: none;
+    border: none;
+    outline: none;
+    color: snow;
+    text-decoration: underline solid snow;
+}
+
+.nameInput::placeholder{
+    color: #d2d2d2;
+}
+
+.submitButton{
+    text-decoration: none;
+    height: 2.5rem;
+    color: snow;
+    font-size: 1.1rem;
+    letter-spacing: 0.2ch;
+    font-weight: 400;
+    background: none;
+    border-radius: 8px;
+    border: 2px solid snow;
+    outline: none;
+    cursor: pointer;
+}
+
+.submitButton:hover{
+    background: snow;
+    color: black;
+}

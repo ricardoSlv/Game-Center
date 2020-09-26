@@ -9,7 +9,7 @@ export default function NavBar() {
             <nav className={styles.navBar}>
                 <NavItem text='Games' href='#games'/>
                 <NavItem text='Get Started' href='#get-started'/>
-                <NavItem text='Account?' href='#account'/>
+                <NavItem text='Leaderboard' href='#leaderboard'/>
                 <NavItem text=' ' href='https://github.com/brunosimon/keppler' github />
             </nav>
     )

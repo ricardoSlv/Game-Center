@@ -5,7 +5,8 @@ import game from './utils/game'
 
 import styles from './SnakeGame.module.css'
 
-type point = [number, number]
+import RecordPrompt from './../../components/RecordPrompt/RecordPrompt'
+
 type color = 'Green' | 'Red' | 'Blue' | 'Orange' | 'Snow' | 'Black' | 'Brown' | 'Gray'
 
 const snakeMapsNumber = 4
@@ -13,7 +14,7 @@ function nexMap(map:number){
   return (map+1)%(snakeMapsNumber)
 }
 
-function Square({ color, text }: { color: color, text: string }) {
+function Square({color, text }: {color: color, text: string }) {
   const backClass = `back${color}`
   return <span className={`${styles.gameSquare} ${styles[backClass]}`} >{text}</span>
 }
@@ -27,7 +28,7 @@ function makeGameBoard(game: game) {
   let board = Array.from((new Array(20)), _ => ((new Array(20)).fill(<Square color='Green' text='🌲' />)))
 
   points.forEach(([x, y]) => board[x][y] = <Square color='Snow' text={snakeDead ? '🐕' : '🦴'} />)
-  bricks.forEach(([x, y]) => board[x][y] = <Square color='Orange' text={'🧱'} />)
+  bricks.forEach(([x, y]) => board[x][y] = <Square  color='Orange' text={'🧱'} />)
 
   const [headX, headY] = points[0]
   const [tailX, tailY] = points[points.length - 1]
@@ -36,10 +37,10 @@ function makeGameBoard(game: game) {
   board[headX][headY] = <Square color='Brown' text='🐶' />
 
   if (points.length > 2) {
-    board[tailX][tailY] = <Square color='Snow' text='🐕' />
+    board[tailX][tailY] = <Square key={tailX*20+tailY} color='Snow' text='🐕' />
   }
   if (snakeDead) {
-    board[headX][headY] = <Square color='Black' text='💀' />
+    board[headX][headY] = <Square key={headX*20+headY} color='Black' text='💀' />
   }
   return board
 }
@@ -93,6 +94,7 @@ function SnakeGame() {
           <div className={styles.gameBackdrop}>
             <span>{'Goodbye bones :('}</span>
             <span>Your score: {board.current.snake.length}</span>
+            <RecordPrompt game='Snake' score={board.current.snake.length} />
           </div>}
       </div>
       <div className={styles.sideBar}>

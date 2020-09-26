@@ -1,0 +1,1 @@
+export type gameTitle = 'Snake' | 'Tetris' | 'Pacman'

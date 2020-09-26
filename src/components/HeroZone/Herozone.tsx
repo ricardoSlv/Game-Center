@@ -10,14 +10,14 @@ export default function Herozone() {
         <header className={styles.header}>
             <h1 className={styles.heroTitle}>Welcome to Games</h1>
             <div className={styles.sideFlex}>
-                <a href="snake">
-                    <SnakeIcon />
+                <a href="/snake">
+                    <SnakeIcon scale={1}/>
                 </a>
                 <a href="/tetris">
-                    <TetrisIcon />
+                    <TetrisIcon scale={1}/>
                 </a>
                 <a href="/pacman">
-                    <PacManIcon />
+                    <PacManIcon scale={1}/>
                 </a>
             </div>
             <h2 className={styles.heroDesc} >They kind of work but sometimes they don't</h2>

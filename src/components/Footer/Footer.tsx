@@ -10,7 +10,7 @@ export default function Footer() {
             <div className={styles.sideFlex}>
                 <NavItem text='Games' href='#games'/>
                 <NavItem text='Get Started' href='#get-started'/>
-                <NavItem text='Account?' href='#account'/>
+                <NavItem text='Leaderboard' href='#leaderboard'/>
                 <span>Made with React</span>
                 <span>Games™ 2020</span>
                 <span>
