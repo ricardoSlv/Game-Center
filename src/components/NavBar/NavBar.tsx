@@ -7,10 +7,10 @@ import styles from './NavBar.module.css'
 export default function NavBar() {
     return (
             <nav className={styles.navBar}>
-                <NavItem text='Games' href='#games'/>
-                <NavItem text='Get Started' href='#get-started'/>
-                <NavItem text='Leaderboard' href='#leaderboard'/>
-                <NavItem text=' ' href='https://github.com/brunosimon/keppler' github />
+                <NavItem text='Home' link='/'/>
+                <NavItem text='Get Started' link='/get-started'/>
+                <NavItem text='Leaderboard' link='/leaderboard'/>
+                <NavItem text=' ' link='https://github.com/ricardoSlv/Game-Center' github />
             </nav>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from "react-router-dom";
 import HeroButton from './../HeroButon/HeroButton'
 import { SnakeIcon, TetrisIcon, PacManIcon } from '../../components/Icons/Icons'
 
@@ -10,15 +10,15 @@ export default function Herozone() {
         <header className={styles.header}>
             <h1 className={styles.heroTitle}>Welcome to Games</h1>
             <div className={styles.sideFlex}>
-                <a href="/snake">
+                <Link to="/snake">
                     <SnakeIcon scale={1}/>
-                </a>
-                <a href="/tetris">
+                </Link>
+                <Link to="/tetris">
                     <TetrisIcon scale={1}/>
-                </a>
-                <a href="/pacman">
+                </Link>
+                <Link to="/pacman">
                     <PacManIcon scale={1}/>
-                </a>
+                </Link>
             </div>
             <h2 className={styles.heroDesc} >They kind of work but sometimes they don't</h2>
             <div className={styles.sideFlex+' '+styles.margTop}>

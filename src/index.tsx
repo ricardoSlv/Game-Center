@@ -11,6 +11,7 @@ import * as serviceWorker from './serviceWorker';
 
 import Layout from './components/Layout/Layout';
 import Welcome from './pages/Welcome/Welcome'
+import Leaderboard from './pages/Leaderboard/Leaderboard'
 import SnakeGame from './games/Snake/SnakeGame'
 
 ReactDOM.render(
@@ -20,9 +21,13 @@ ReactDOM.render(
         <Route path="/snake">
           <SnakeGame />
         </Route>
+        <Route path="/leaderboard">
+          <Leaderboard />
+        </Route>
         <Route path="/">
           <Welcome />
         </Route>
+        
       </Switch>
     </Layout>
   </Router>
