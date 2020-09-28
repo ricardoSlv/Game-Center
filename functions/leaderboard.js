@@ -10,7 +10,8 @@ async function getLeaderboard(query) {
     const database = DBclient.db(process.env.DB_NAME)
     const collection = database.collection('leaderboard')
     let leaderboardObj = {}
-   
+    
+    console.log('Query: ', query)
     leaderboardObj = await collection.find(query).toArray() 
     leaderboard = leaderboardObj.leaderboard
 
