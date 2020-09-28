@@ -9,7 +9,8 @@ const uri=`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@gamesdb.ji
       await DBclient.connect();
       const database = DBclient.db(process.env.DB_NAME)
       const collection = database.collection('leaderboard')
-      const leaderboardObj = await collection.findOne({game:'snake',map:map})
+      //const leaderboardObj = await collection.findOne({game:'snake',map:map})
+      const leaderboardObj = await collection.find({game:'snake',map:map}).next()
       leaderboard = leaderboardObj.leaderboard
 
     }catch(error){
