@@ -1,4 +1,4 @@
-import mongodb from 'mongodb';
+let mongodb = require('mongodb');
 const { MongoClient } = mongodb;
 const uri=`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@discbotdb.ildnc.mongodb.net?retryWrites=true&w=majority`
 
