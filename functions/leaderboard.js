@@ -11,6 +11,7 @@ async function getLeaderboard({game, map}) {
     const collection = database.collection('leaderboard')
     let leaderboardObj = {}
     let query={game: game||/.*/, map: map||/.*/}
+    console.log('Query: ',query)
    
     leaderboardObj = await collection.find({query}).toArray() 
     leaderboard = leaderboardObj.leaderboard
@@ -25,7 +26,7 @@ async function getLeaderboard({game, map}) {
 
 exports.handler = async function handler(event, _ /*context*/, callback) {
   const lb = await getLeaderboard(event.queryStringParameters)
-  console.log(event)
+  console.log(event.queryStringParameters)
   callback(null, {
     statusCode: 200,
     body: JSON.stringify(lb)
