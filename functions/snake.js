@@ -24,6 +24,6 @@ exports.handler = async function handler(event, context, callback) {
   const lb = await getSnakeLeaderboard(1)
   callback(null, {
   statusCode: 200,
-  body: lb
+  body: JSON.stringify(lb)
   });
 }
