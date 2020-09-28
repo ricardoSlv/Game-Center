@@ -1,6 +1,6 @@
 let mongodb = require('mongodb');
 const { MongoClient } = mongodb;
-const uri=`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@discbotdb.ildnc.mongodb.net?retryWrites=true&w=majority`
+const uri=`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@gamesdb.jiemy.mongodb.net?retryWrites=true&w=majority`
 
  async function getSnakeLeaderboard(map){
     const DBclient = new MongoClient(uri,{ useUnifiedTopology: true })
