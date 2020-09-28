@@ -14,6 +14,9 @@ const uri=`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@discbotdb.
 
     }catch(error){
       console.log('Couldn\'t load leaderboard',error)
+      console.log('DB name ',process.env.DB_NAME)
+      console.log('User ',process.env.DB_USER)
+      console.log('Pass ',process.env.DB_PWD)
     } finally {
       await DBclient.close()
     }
