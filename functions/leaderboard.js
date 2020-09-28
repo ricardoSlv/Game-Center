@@ -9,11 +9,9 @@ async function getLeaderboard(query) {
     await DBclient.connect();
     const database = DBclient.db(process.env.DB_NAME)
     const collection = database.collection('leaderboard')
-    let leaderboardObj = {}
     
     console.log('Query: ', query)
-    leaderboardObj = await collection.find(query).toArray() 
-    leaderboard = leaderboardObj.leaderboard
+    leaderboard = await collection.find(query).toArray() 
 
   } catch (error) {
     console.log('Couldn\'t load leaderboard', error)
