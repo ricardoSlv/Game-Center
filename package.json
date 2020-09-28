@@ -17,6 +17,7 @@
     "react-scripts": "^3.4.3",
     "typescript": "^3.9.7"
   },
+  "type": "module",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
