@@ -8,12 +8,10 @@ export default function Leaderboard() {
             const query = {}
             let snakeboards: any[] = []
             try {
-                //const response = await fetch('./api/leaderboard?' + new URLSearchParams(query))
                 const response = await fetch('./api/leaderboard',
                     {
-                        method: 'GET',
-                        headers: { 'Content-Type': 'application/json' },
-                        redirect: 'follow'
+                        method: 'POST',
+                        body: JSON.stringify(query)
                     })
                 console.log(response)
                 if (response.status !== 200)
