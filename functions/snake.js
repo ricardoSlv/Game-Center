@@ -13,7 +13,7 @@ const uri=`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@discbotdb.
       leaderboard = leaderboardObj.leaderboard
 
     }catch(error){
-      console.log('Couldn\'t load leaderboard')
+      console.log('Couldn\'t load leaderboard',error)
     } finally {
       await DBclient.close()
     }
