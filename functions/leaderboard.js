@@ -22,6 +22,8 @@ async function getSnakeLeaderboard(map) {
 
 exports.handler = async function handler(event, context, callback) {
   const lb = await getSnakeLeaderboard(1)
+  console.log(event)
+  console.log(context)
   callback(null, {
     statusCode: 200,
     body: JSON.stringify(lb)
