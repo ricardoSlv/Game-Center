@@ -1,0 +1,19 @@
+.wrapper{
+    font-size: 1.5rem;
+}
+
+.title{
+    font-size: 2.5em;
+    margin: 0.5em;
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.scoreItem{
+    padding-left: 0.5em;
+    letter-spacing: 0.07ch;
+}

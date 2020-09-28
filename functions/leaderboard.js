@@ -22,7 +22,7 @@ async function getLeaderboard(query) {
 }
 
 exports.handler = async function handler(event, _ /*context*/, callback) {
-  const lb = await getLeaderboard(event.queryStringParameters)
+  const lb = await getLeaderboard(event.body)
   console.log('query ',event.queryStringParameters,'body ',event.body)
   callback(null, {
     statusCode: 200,
