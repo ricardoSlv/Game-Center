@@ -26,6 +26,6 @@ exports.handler = async function handler(event, _ /*context*/, callback) {
   console.log(event.queryStringParameters)
   callback(null, {
     statusCode: 200,
-    body: lb
+    body: JSON.stringify(lb)
   });
 }
