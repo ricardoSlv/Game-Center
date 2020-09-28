@@ -20,7 +20,7 @@ const uri=`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@discbotdb.
     return leaderboard
 }
 
-export async function handler(event, context, callback) {
+exports.handler = async function handler(event, context, callback) {
   const lb = await getSnakeLeaderboard(1)
   callback(null, {
   statusCode: 200,
