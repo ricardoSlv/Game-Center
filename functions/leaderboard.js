@@ -11,8 +11,7 @@ async function getLeaderboard(query) {
     const collection = database.collection('leaderboard')
     
     console.log('Query: ', query)
-    //leaderboard = await collection.find(query).toArray() 
-    leaderboard = await collection.find({ game: 'snake', map: '1' }).toArray() 
+    leaderboard = await collection.find(query).toArray() 
     console.log('Queried: ',query,'\n','Got: ',leaderboard)
 
   } catch (error) {
@@ -25,7 +24,7 @@ async function getLeaderboard(query) {
 
 exports.handler = async function handler(event, _ /*context*/, callback) {
   const lb = await getLeaderboard(event.body)
-  console.log('body ',event.body,'query ',event.queryStringParams)
+  console.log('body ',event.body,typeof(body))
   callback(null, {
     statusCode: 200,
     body: JSON.stringify(lb)
