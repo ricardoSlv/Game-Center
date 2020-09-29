@@ -31,7 +31,7 @@ exports.updateLeaderboard =  async function updateLeaderboard(query,name,score) 
   
     const leaderboard = await collection.find(query).toArray()
 
-    let recordList = leaderboard.leaderboard
+    let recordList = leaderboard[0].leaderboard
     recordList.pop()
     recordList.push({name,score})
     recordList.sort((a,b)=>a.score-b.score)
