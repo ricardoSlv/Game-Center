@@ -35,6 +35,7 @@ exports.updateLeaderboard =  async function updateLeaderboard(query,name,score) 
     recordList.pop()
     recordList.push({name,score})
     recordList.sort((a,b)=>b.score-a.score)
+    console.log(recordList.map(x=>`${x.name}: ${x.score}\n`))
     await collection.updateOne(query,{$set:{leaderboard:recordList}})
 
     status='sucess'
