@@ -1,14 +1,18 @@
-const {updateLeaderboard} = require('./database/db')
+const { updateLeaderboard } = require('./database/db')
 
 exports.handler = async function handler(event, _ /*context*/, callback) {
-    let status={}
-    const {game,map,name,score} = JSON.parse(event.body)
-    const updateStatus = await updateLeaderboard({game,map},name,score)
+    let status = {}
+    const { game, map, name, score } = JSON.parse(event.body)
 
-    if(updateStatus==='sucess')
-        status={updated: true}
+    const updateStatus = await updateLeaderboard({ game, map }, name, score)
+    if (name !== null && name !== '') {
+        if (updateStatus === 'sucess')
+            status = { updated: true }
+        else
+            status = { updated: false }
+    }
     else
-        status={updated: false}    
+        status = { updated: false }
     callback(null, {
         statusCode: 200,
         body: JSON.stringify(status)
