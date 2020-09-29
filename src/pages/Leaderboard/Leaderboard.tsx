@@ -34,7 +34,7 @@ export default function Leaderboard() {
                 {snakeLeaderboards.map((l) => <div >
                     {
                         <div>
-                            <h3>{`${l.game.replace(/^./, l.game.charAt(0).toUpperCase())} Map: ${l.map}`}</h3>
+                            <h2>{`${l.game.replace(/^./, l.game.charAt(0).toUpperCase())} Map: ${l.map}`}</h2>
                             {l.leaderboard && l.leaderboard.map(k => <p className={styles.scoreItem}>{`${k.name}: ${k.score}`}</p>)}
                         </div>
                     }

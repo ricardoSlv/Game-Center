@@ -4,8 +4,8 @@ exports.handler = async function handler(event, _ /*context*/, callback) {
     let status = {}
     const { game, map, name, score } = JSON.parse(event.body)
 
-    const updateStatus = await updateLeaderboard({ game, map }, name, score)
     if (name !== null && name !== '') {
+        const updateStatus = await updateLeaderboard({ game, map }, name, score)
         if (updateStatus === 'sucess')
             status = { updated: true }
         else

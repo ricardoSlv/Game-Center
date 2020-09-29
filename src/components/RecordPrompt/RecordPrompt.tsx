@@ -30,19 +30,19 @@ export default function RecordPrompt(props: { game: gameTitle, map: number, scor
                 })
             if (response.status !== 200){
                 console.log('There was a problem. Status Code: ' + response.status);
-                setUpdateStatus('There was an error, your score was not added1 :(')
+                setUpdateStatus('There was an error, your score was not added :(')
             }
             else{
                 const status = await response.json()
                 console.log('Response: ',status,'\n','query: ',JSON.stringify({name:name, map:`${props.map+1}`, score: `${props.score}` }))
                 if(status.updated)
-                    setUpdateStatus('Congratulations, you\'re on the leaderobard!!')
+                    setUpdateStatus('Congratulations, you\'re on the leaderboard!!')
                 else
-                    setUpdateStatus('There was an error, your score was not added2 :(')
+                    setUpdateStatus('There was an error, your score was not added :(')
             }
         }
         catch (err) {
-            setUpdateStatus('There was an error, your score was not added3 :(')
+            setUpdateStatus('There was an error, your score was not added :(')
             console.log('Error:', err);
         }
         setUpdating(false)

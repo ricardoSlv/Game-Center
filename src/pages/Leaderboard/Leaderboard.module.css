@@ -16,4 +16,6 @@
 .scoreItem{
     padding-left: 0.5em;
     letter-spacing: 0.07ch;
+    padding-bottom: 0.3em;
+    font-size: 1.05em;
 }
