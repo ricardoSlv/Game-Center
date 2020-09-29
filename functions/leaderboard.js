@@ -11,7 +11,8 @@ async function getLeaderboard(query) {
     const collection = database.collection('leaderboard')
     
     console.log('Query: ', query)
-    leaderboard = await collection.find(query).toArray() 
+    //leaderboard = await collection.find(query).toArray() 
+    leaderboard = await collection.find({ game: 'snake', map: '1' }).toArray() 
     console.log('Queried: ',query,'\n','Got: ',leaderboard)
 
   } catch (error) {
