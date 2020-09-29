@@ -12,6 +12,7 @@ async function getLeaderboard(query) {
     
     console.log('Query: ', query)
     leaderboard = await collection.find(query).toArray() 
+    console.log('Queried: ',query,'\n','Got: ',leaderboard)
 
   } catch (error) {
     console.log('Couldn\'t load leaderboard', error)
