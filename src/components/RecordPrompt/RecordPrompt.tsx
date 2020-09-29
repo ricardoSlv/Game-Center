@@ -1,44 +1,108 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import styles from './RecordPrompt.module.css'
 
-import {gameTitle} from './../../../types'
+import { gameTitle } from './../../../types'
 
 
-function handleSubmit(e: React.SyntheticEvent) {
-    const form = (e.target as HTMLFormElement)
-    const name = (form.name as unknown as HTMLInputElement)
-    console.log(name)
-    e.preventDefault()
-}
 
-export default function RecordPrompt(props:{game:gameTitle,score:number}) {
+
+export default function RecordPrompt(props: { game: gameTitle, map: number, score: number }) {
+
     const [name, setName] = useState('')
+    const [loading, setLoading] = useState(true)
+    const [qualified, setQualified] = useState(false)
+    const [updating, setUpdating] = useState(false)
+    const [updated, setUpdated] = useState(false)
+    const [updateStatus, setUpdateStatus] = useState('')
+    
+    async function handleSubmit(e: React.SyntheticEvent) {
+        const form = (e.target as HTMLFormElement)
+        const name = (form.name as unknown as HTMLInputElement).value
+        
+        e.preventDefault()
+        setUpdating(true)
+        try {
+            const response = await fetch('./api/addrecord',
+                {
+                    method: 'POST',
+                    body: JSON.stringify({game:props.game.toLowerCase(), name:name, map:`${props.map+1}`, score: `${props.score}` })
+                })
+            if (response.status !== 200){
+                console.log('There was a problem. Status Code: ' + response.status);
+                setUpdateStatus('There was an error, your score was not added1 :(')
+            }
+            else{
+                const status = await response.json()
+                console.log('Response: ',status,'\n','query: ',JSON.stringify({name:name, map:`${props.map+1}`, score: `${props.score}` }))
+                if(status.updated)
+                    setUpdateStatus('Congratulations, you\'re on the leaderobard!!')
+                else
+                    setUpdateStatus('There was an error, your score was not added2 :(')
+            }
+        }
+        catch (err) {
+            setUpdateStatus('There was an error, your score was not added3 :(')
+            console.log('Error:', err);
+        }
+        setUpdating(false)
+        setUpdated(true)
+        
+    }
 
     useEffect(() => {
-        
-        return () => {
+        async function fetchData() {
+            setLoading(true)
+            try {
+                const response = await fetch('./api/verifyrecord',
+                    {
+                        method: 'POST',
+                        body: JSON.stringify({game:props.game.toLowerCase(), map:`${props.map+1}`, score: `${props.score}` })
+                    })
+                if (response.status !== 200){
+                    console.log({game:props.game.toLowerCase(), map:`${props.map}`, score: `${props.score}` })
+                    console.log('There was a problem. Status Code: ' + response.status)
+                }
+                else{
+                    const responseObj = await response.json()
+                    console.log(responseObj)
+                    setQualified(responseObj.qualified)
+                }
+            }
+            catch (err) {
+                console.log('Error:', err)
+            }
+            setLoading(false)
         }
-    }, )
+        fetchData();
+        return () => { }
+    }, [props.score,props.game,props.map])
 
     return (
         <div className={styles.wrapper}>
-            <span>You're in the top 10!</span>
-            <form onSubmit={handleSubmit}>
-                <input className={styles.nameInput}
-                    name="name" 
-                    type="text"
-                    placeholder="Insert your name"
-                    value={name}
-                    onChange={(e) => {
-                        setName(e.target.value)
-                    }}
-                />
-                <br/>
-                <button className={styles.submitButton} type="submit">
-                    Add me to leaderboard
-                </button>
-            </form>
+            {loading && <span>Loading...</span>}
+            {!loading && !qualified && <span>{'You\'re not on the top 10 :('}<br />{'Better luck next time!'}</span>}
+            {!loading && qualified &&
+                <>
+                    <p>You're in the top 10!</p>
+                    {!updated && !updating &&
+                        <form onSubmit={handleSubmit}>
+                            <input className={styles.nameInput}
+                                name="name"
+                                type="text"
+                                placeholder="Insert your name"
+                                value={name}
+                                onChange={(e) => {
+                                    setName(e.target.value)
+                                }} />
+                            <br />
+                            <button className={styles.submitButton} type="submit">
+                                Add me to leaderboard
+                            </button>
+                        </form>}
+                    {updating && <p>Updating leaderboard...</p>}
+                    {updated && <p>{updateStatus}</p>}
+                </>}
         </div>
     )
 }

@@ -93,8 +93,8 @@ function SnakeGame() {
         {dead &&
           <div className={styles.gameBackdrop}>
             <span>{'Goodbye bones :('}</span>
-            <span>Your score: {board.current.snake.length}</span>
-            <RecordPrompt game='Snake' score={board.current.snake.length} />
+            <span>Your score: {board.current.snake.length-1}</span>
+            <RecordPrompt game='Snake' map={map} score={board.current.snake.length-1} />
           </div>}
       </div>
       <div className={styles.sideBar}>
