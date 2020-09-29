@@ -44,7 +44,13 @@ function getValidApple([sizeX, sizeY]: [number, number], points: point[], bricks
         appleX = Math.floor(Math.random() * sizeX)
         appleY = Math.floor(Math.random() * sizeY)
         if (containsPoint(points, [appleX, appleY]) === false && containsPoint(bricks, [appleX, appleY]) === false) {
-            complete = true;
+            if(appleX===0||appleY===0||appleX===sizeX-1||appleY===sizeY-1)
+                if(Math.random()>0.5)
+                    complete=true
+                else
+                    complete=false
+            else        
+                complete = true;
         }
     }
     return [appleX, appleY]

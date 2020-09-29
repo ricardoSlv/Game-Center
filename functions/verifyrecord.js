@@ -5,7 +5,7 @@ exports.handler = async function handler(event, _ /*context*/, callback) {
     const {game,map,score} = JSON.parse(event.body)
     const lb = await getLeaderboard({game,map})
 
-    if(lb[0].leaderboard.some(x=>x.score<score))
+    if(lb[0].leaderboard.some(x=>parseInt(x.score)<parseInt(score)))
         status={qualified: true}
     else
         status={qualified: false}    
