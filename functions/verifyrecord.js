@@ -1,4 +1,4 @@
-const {getLeaderboard} = require('./../database/db')
+const {getLeaderboard} = require('./database/db')
 
 exports.handler = async function handler(event, _ /*context*/, callback) {
     let status={}
