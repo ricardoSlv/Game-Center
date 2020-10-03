@@ -8,6 +8,7 @@ import styles from './SnakeGame.module.css'
 import RecordPrompt from './../../components/RecordPrompt/RecordPrompt'
 import GameWrapper from './../../components/UI/GameWrapper/GameWrapper'
 import GameSideBar from './../../components/UI/GameSideBar/GameSideBar'
+import GameBoard from './../../components/UI/GameBoard/GameBoard'
 import Backdrop from './../../components/UI/Backdrop/Backdrop'
 
 type color = 'Green' | 'Red' | 'Blue' | 'Orange' | 'Snow' | 'Black' | 'Brown' | 'Gray'
@@ -42,7 +43,7 @@ function nexMap(map: number) {
 
 function Square({ color, text }: { color: color, text: string }) {
   const backClass = `back${color}`
-  return <span className={`${styles.gameSquare} ${styles[backClass]}`} >{text}</span>
+  return <span key={Math.random()} className={`${styles.gameSquare} ${styles[backClass]}`} >{text}</span>
 }
 
 function ArrowBox(props: { input: Array<number> }) {
@@ -165,21 +166,21 @@ function SnakeGame() {
 
   return (
     <GameWrapper>
-      {/* Board */}
-      <div className={styles.gameBackground}>
-        {renderBoard}
-        {pause &&
-          <Backdrop>
-            <span>Game Paused</span>
-          </Backdrop>}
-        {dead &&
-          <Backdrop>
-            <span>{'Goodbye bones :('}</span>
-            <span>Your score: {board.current.snake.length - 1}</span>
-            <RecordPrompt game='Snake' map={map} score={board.current.snake.length - 1} />
-          </Backdrop>}
-      </div>
-      {/* Sidebar */}
+      <GameBoard>
+        <div className={styles.gameBackground}>
+          {renderBoard}
+          {pause &&
+            <Backdrop>
+              <span>Game Paused</span>
+            </Backdrop>}
+          {dead &&
+            <Backdrop>
+              <span>{'Goodbye bones :('}</span>
+              <span>Your score: {board.current.snake.length - 1}</span>
+              <RecordPrompt game='Snake' map={map} score={board.current.snake.length - 1} />
+            </Backdrop>}
+        </div>
+      </GameBoard>
       <GameSideBar>
         <p className={styles.gameInfo}>{`Map: ${map + 1}`}</p>
         <p className={styles.gameInfo}>{`Highscore: ${highscore[map]}`}</p>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function PacmanDraw() {
+export default function PacmanGame() {
     return (
         <div>
             
