@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom";
-import HeroButton from './../HeroButon/HeroButton'
-import { SnakeIcon, TetrisIcon, PacManIcon } from '../../components/Icons/Icons'
+import HeroButton from '../../../components/HeroButon/HeroButton'
+import { SnakeIcon, TetrisIcon, PacManIcon } from '../../../components/Icons/Icons'
 
 import styles from './HeroZone.module.css'
 

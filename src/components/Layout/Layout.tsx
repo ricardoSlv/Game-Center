@@ -1,6 +1,6 @@
 import React from 'react'
 
-import BackGround from '../Background/Background'
+import BackGround from '../UI/Background/Background'
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import HeroZone from '../../components/HeroZone/Herozone'
+import HeroZone from './HeroZone/Herozone'
 
 export default function Welcome() {
     return (

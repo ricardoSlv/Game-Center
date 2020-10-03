@@ -6,6 +6,9 @@ import game from './utils/game'
 import styles from './SnakeGame.module.css'
 
 import RecordPrompt from './../../components/RecordPrompt/RecordPrompt'
+import GameWrapper from './../../components/UI/GameWrapper/GameWrapper'
+import GameSideBar from './../../components/UI/GameSideBar/GameSideBar'
+import Backdrop from './../../components/UI/Backdrop/Backdrop'
 
 type color = 'Green' | 'Red' | 'Blue' | 'Orange' | 'Snow' | 'Black' | 'Brown' | 'Gray'
 
@@ -115,15 +118,16 @@ function gameStateReducer(state: gameState, { board, inputBuffer, action }: { bo
       if (!newState.dead)
         newState.pause = !pause
       break
-    case 'NewGame' || 'NextMap':
+    case 'NewGame':
       newState.id = id + 1
       newState.dead = false
       newState.pause = false
-    // eslint-disable-next-line no-fallthrough
-    case 'NewGame':
       board.current = (new game(map))
       break
     case 'NextMap':
+      newState.id = id + 1
+      newState.dead = false
+      newState.pause = false
       const nextMap = nexMap(map)
       board.current = (new game(nextMap))
       newState.map = nextMap
@@ -145,7 +149,7 @@ function SnakeGame() {
 
   useEffect(() => {
     dispatch({ board, inputBuffer: [up, down, left, right], action: 'Move' })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [moveId])
 
   useEffect(() => {
@@ -160,21 +164,23 @@ function SnakeGame() {
   }, [moveId, pause, dead]);
 
   return (
-    <div className={styles.App}>
+    <GameWrapper>
+      {/* Board */}
       <div className={styles.gameBackground}>
         {renderBoard}
         {pause &&
-          <div className={styles.gameBackdrop}>
+          <Backdrop>
             <span>Game Paused</span>
-          </div>}
+          </Backdrop>}
         {dead &&
-          <div className={styles.gameBackdrop}>
+          <Backdrop>
             <span>{'Goodbye bones :('}</span>
             <span>Your score: {board.current.snake.length - 1}</span>
             <RecordPrompt game='Snake' map={map} score={board.current.snake.length - 1} />
-          </div>}
+          </Backdrop>}
       </div>
-      <div className={styles.sideBar}>
+      {/* Sidebar */}
+      <GameSideBar>
         <p className={styles.gameInfo}>{`Map: ${map + 1}`}</p>
         <p className={styles.gameInfo}>{`Highscore: ${highscore[map]}`}</p>
         <p className={styles.gameInfo}>{`Current score: ${board.current.snake.length - 1}`}</p>
@@ -195,9 +201,8 @@ function SnakeGame() {
           Pause
         </button>
         <ArrowBox input={[up, down, left, right]} />
-      </div>
-
-    </div>
+      </GameSideBar>
+    </GameWrapper>
   );
 }
 
