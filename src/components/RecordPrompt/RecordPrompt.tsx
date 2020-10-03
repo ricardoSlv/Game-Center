@@ -16,10 +16,8 @@ export default function RecordPrompt(props: { game: gameTitle, map: number, scor
     const [updated, setUpdated] = useState(false)
     const [updateStatus, setUpdateStatus] = useState('')
     
-    async function handleSubmit(e: React.SyntheticEvent) {
-        const form = (e.target as HTMLFormElement)
-        const name = (form.name as unknown as HTMLInputElement).value
-        
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+     
         e.preventDefault()
         setUpdating(true)
         try {
