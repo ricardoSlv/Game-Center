@@ -167,18 +167,21 @@ function SnakeGame() {
   return (
     <GameWrapper>
       <GameBoard>
-        <div className={styles.gameBackground}>
-          {renderBoard}
-          {pause &&
-            <Backdrop>
-              <span>Game Paused</span>
-            </Backdrop>}
-          {dead &&
-            <Backdrop>
-              <span>{'Goodbye bones :('}</span>
-              <span>Your score: {board.current.snake.length - 1}</span>
-              <RecordPrompt game='Snake' map={map} score={board.current.snake.length - 1} />
-            </Backdrop>}
+        <div className={styles.gridWrapper} >
+          <div className={styles.gameBackground} />
+          <div className={styles.gridFlex}>
+            {renderBoard}
+            {pause &&
+              <Backdrop>
+                <span>Game Paused</span>
+              </Backdrop>}
+            {dead &&
+              <Backdrop>
+                <span>{'Goodbye bones :('}</span>
+                <span>Your score: {board.current.snake.length - 1}</span>
+                <RecordPrompt game='Snake' map={map} score={board.current.snake.length - 1} />
+              </Backdrop>}
+          </div>
         </div>
       </GameBoard>
       <GameSideBar>

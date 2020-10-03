@@ -6,6 +6,21 @@
     background-color:green;
 }
 
+.gridWrapper{
+    width: 100%;
+    height: 100%;
+}
+
+.gridFlex{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display:flex;
+    flex-wrap:wrap;
+}
+
 .arrowContainer{
     display:flex;
     flex-wrap:wrap;
@@ -38,6 +53,8 @@
     width: 80%;
     padding: 0px 8px;
 }
+
+
 
 .greyFilter{
     background-color: #6344d4;

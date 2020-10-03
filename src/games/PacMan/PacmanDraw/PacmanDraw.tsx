@@ -62,15 +62,17 @@ export default function PacmanDraw() {
     return (
         <GameWrapper>
             <GameBoard>
+                <div style={{display:'flex',height:'100%',flexWrap:'wrap'}}>
                 {board.map((x, l) => x.map((_, c) =>
                     <button
-                        style={{ width: `${100 / 21}%`, height: `${100 / 27}%`, backgroundColor: color(board[l][c]) }}
+                        style={{ width: `${100 / 21}%`, height: `${100 / 27}%`,fontSize:'1rem', backgroundColor: color(board[l][c]) }}
                         onClick={() => {
                             let newBoard = dup(board)
                             newBoard[l][c] = (newBoard[l][c] + 1) % 4
                             setBoard(newBoard)
                         }}
                     />))}
+                    </div>
             </GameBoard>
             <GameSideBar>
                 <button onClick={() => console.log(`[${board.map(l => `\n[${l.toString()}]`)}]`)}>Print</button>
