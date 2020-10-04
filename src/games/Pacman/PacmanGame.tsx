@@ -10,12 +10,12 @@ import GameSideBar from '../../components/UI/GameSideBar/GameSideBar'
 import Square from './Square'
 
 
-function dup(arr: number[][]) {
-    return arr.map(x => x.map(e => e))
-}
+// function dup(arr: number[][]) {
+//     return arr.map(x => x.map(e => e))
+// }
 
 export default function PacmanDraw() {
-    const [board, setBoard] = useState<number[][]>(initialMap)
+    const [board, /*setBoard*/] = useState<number[][]>(initialMap)
     const [open, setOpen] = useState(false)
 
     useEffect(() => {
