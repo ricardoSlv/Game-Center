@@ -13,7 +13,8 @@ import Layout from './components/Layout/Layout';
 import Welcome from './pages/Welcome/Welcome'
 import Leaderboard from './pages/Leaderboard/Leaderboard'
 import SnakeGame from './games/Snake/SnakeGame'
-import PacmanDraw from './games/PacMan/PacmanDraw/PacmanDraw';
+import PacmanDraw from './games/Pacman/PacmanDraw/PacmanDraw';
+import PacmanGame from './games/Pacman/PacmanGame';
 
 ReactDOM.render(
   <Router>
@@ -22,8 +23,11 @@ ReactDOM.render(
         <Route path="/snake">
           <SnakeGame />
         </Route>
-        <Route path="/pacman">
+        <Route path="/pacmandraw">
           <PacmanDraw />
+        </Route>
+        <Route path="/pacman">
+          <PacmanGame />
         </Route>
         <Route path="/leaderboard">
           <Leaderboard />
@@ -31,7 +35,6 @@ ReactDOM.render(
         <Route path="/">
           <Welcome />
         </Route>
-        
       </Switch>
     </Layout>
   </Router>

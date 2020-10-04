@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-import {initialMap} from './../utils/game'
+import {initialMap} from './utils/game'
 
-import styles from './../PacmanGame.module.css'
+import styles from './PacmanGame.module.css'
 
-import GameWrapper from './../../../components/UI/GameWrapper/GameWrapper'
-import GameBoard from '../../../components/UI/GameBoard/GameBoard'
-import GameSideBar from '../../../components/UI/GameSideBar/GameSideBar'
-import Square from '../Square'
+import GameWrapper from '../../components/UI/GameWrapper/GameWrapper'
+import GameBoard from '../../components/UI/GameBoard/GameBoard'
+import GameSideBar from '../../components/UI/GameSideBar/GameSideBar'
+import Square from './Square'
 
 
 function dup(arr: number[][]) {
@@ -16,6 +16,12 @@ function dup(arr: number[][]) {
 
 export default function PacmanDraw() {
     const [board, setBoard] = useState<number[][]>(initialMap)
+    const [open, setOpen] = useState(false)
+
+    useEffect(() => {
+        setInterval(()=>setOpen(open=>!open),100)
+        return () => {}
+    }, []) 
     return (
         <GameWrapper>
             <GameBoard>
@@ -27,14 +33,10 @@ export default function PacmanDraw() {
                                     <Square
                                         board={board}
                                         coords={[l, c]}
-                                        onClick={() => {
-                                            let newBoard = dup(board)
-                                            newBoard[l][c] = (newBoard[l][c] + 1) % 4
-                                            setBoard(newBoard)
-                                        }}
                                     />
                                 )}
                             </div>)}
+                    <div className={open?styles.pacChomperOpen:styles.pacChomperClosed}></div>
                     </div>
                 </div>
             </GameBoard>
