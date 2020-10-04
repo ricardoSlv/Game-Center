@@ -1,60 +1,17 @@
 import React, { useState } from 'react'
 
+import {initialMap} from './../utils/game'
+
+import styles from './../PacmanGame.module.css'
+
 import GameWrapper from './../../../components/UI/GameWrapper/GameWrapper'
 import GameBoard from '../../../components/UI/GameBoard/GameBoard'
 import GameSideBar from '../../../components/UI/GameSideBar/GameSideBar'
+import Square from '../Square'
 
-const initialMap = [
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-    [1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1],
-    [1, 3, 1, 0, 1, 2, 1, 0, 1, 2, 1, 2, 1, 0, 1, 2, 1, 0, 1, 3, 1],
-    [1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1],
-    [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-    [1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1],
-    [1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1],
-    [1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1],
-    [1, 1, 1, 1, 1, 2, 1, 1, 1, 0, 1, 0, 1, 1, 1, 2, 1, 1, 1, 1, 1],
-    [0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0],
-    [0, 0, 0, 0, 1, 2, 1, 0, 1, 1, 1, 1, 1, 0, 1, 2, 1, 0, 0, 0, 0],
-    [1, 1, 1, 1, 1, 2, 1, 0, 1, 0, 0, 0, 1, 0, 1, 2, 1, 1, 1, 1, 1],
-    [0, 0, 0, 0, 0, 2, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2, 0, 0, 0, 0, 0],
-    [1, 1, 1, 1, 1, 2, 1, 0, 1, 1, 1, 1, 1, 0, 1, 2, 1, 1, 1, 1, 1],
-    [0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0],
-    [0, 0, 0, 0, 1, 2, 1, 0, 1, 1, 1, 1, 1, 0, 1, 2, 1, 0, 0, 0, 0],
-    [1, 1, 1, 1, 1, 2, 1, 0, 1, 1, 1, 1, 1, 0, 1, 2, 1, 1, 1, 1, 1],
-    [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-    [1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1],
-    [1, 3, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 3, 1],
-    [1, 1, 1, 2, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 1, 1, 1],
-    [1, 1, 1, 2, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 1, 1, 1],
-    [1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1],
-    [1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1],
-    [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-]
 
 function dup(arr: number[][]) {
     return arr.map(x => x.map(e => e))
-}
-
-function color(num: number) {
-    let color = ''
-    switch (num) {
-        case 0:
-            color = 'black'
-            break
-        case 1:
-            color = 'blue'
-            break
-        case 2:
-            color = 'yellow'
-            break
-        case 3:
-            color = 'red'
-            break
-    }
-    return color
 }
 
 export default function PacmanDraw() {
@@ -62,17 +19,24 @@ export default function PacmanDraw() {
     return (
         <GameWrapper>
             <GameBoard>
-                <div style={{display:'flex',height:'100%',flexWrap:'wrap'}}>
-                {board.map((x, l) => x.map((_, c) =>
-                    <button
-                        style={{ width: `${100 / 21}%`, height: `${100 / 27}%`,fontSize:'1rem', backgroundColor: color(board[l][c]) }}
-                        onClick={() => {
-                            let newBoard = dup(board)
-                            newBoard[l][c] = (newBoard[l][c] + 1) % 4
-                            setBoard(newBoard)
-                        }}
-                    />))}
+                <div className={styles.pacBackground}>
+                    <div className={styles.gridContainer}>
+                        {board.map((x, l) =>
+                            <div className={styles.gridLine}>
+                                {x.map((_, c) =>
+                                    <Square
+                                        board={board}
+                                        coords={[l, c]}
+                                        onClick={() => {
+                                            let newBoard = dup(board)
+                                            newBoard[l][c] = (newBoard[l][c] + 1) % 4
+                                            setBoard(newBoard)
+                                        }}
+                                    />
+                                )}
+                            </div>)}
                     </div>
+                </div>
             </GameBoard>
             <GameSideBar>
                 <button onClick={() => console.log(`[${board.map(l => `\n[${l.toString()}]`)}]`)}>Print</button>

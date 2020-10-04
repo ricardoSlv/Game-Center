@@ -1,0 +1,99 @@
+.pacBackground{
+    height: 100%;
+    background-image: url('https://steamuserimages-a.akamaihd.net/ugc/263845944682309837/83ED29B2D38D59D90E0B106D1D3BF61C665D3E03/');
+    background-size: contain;
+    background-position: center;
+    background-color: black;
+}
+
+.gridContainer{
+    display: flex;
+    width: 80%;
+    overflow: hidden;
+    margin: auto;
+    height: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.gridLine{
+    width: 100%;
+    height: calc(100% / 27);
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.pacSquare{
+    border: none;
+    outline: none;
+    height: 100%;
+    width: calc(100% / 21);
+    background-color: rgba(0, 0, 0, 0);
+    display: block;
+    position: relative;
+    padding: 0;
+}
+
+.smallBall{
+    position: absolute;
+    top: calc(50% - 4px);
+    left: calc(50% - 4px);
+    border-radius: 50%;
+    height: 8px;
+    width: 8px;
+    background-color: yellow;
+}
+
+.bigBall{
+    position: absolute;
+    top: calc(50% - 8px);
+    left: calc(50% - 8px);
+    border-radius: 50%;
+    height: 16px;
+    width: 16px;
+    background-color: yellow;
+}
+
+.midBlockPipe{
+    position: absolute;
+    top: calc(50% - 7px);
+    left: calc(50% - 7px);
+    height: 14px;
+    width: 14px;
+    border: 3px solid blue;
+}
+
+.topPipe,
+.botPipe,
+.leftPipe,
+.rightPipe{
+    position: absolute;
+    background-color: blue;
+}
+
+.topPipe{
+    top: 0;
+    left: calc(50% - 7px);
+    height: calc(50% - 7px);
+    width: 14px;
+}
+.botPipe{
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 7px);
+    height: calc(50% - 7px);
+    width: 14px;
+}
+.leftPipe{
+    left: 0;
+    top: calc(50% - 7px);
+    height: 14px;
+    width: calc(50% - 7px);
+}
+.rightPipe{
+    right: 0;
+    top: calc(50% - 7px);
+    height: 14px;
+    width: calc(50% - 7px);
+}
