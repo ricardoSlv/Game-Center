@@ -53,9 +53,12 @@ function getPath(pos: point, goal: point, map: number[][]) {
     }
 
     console.log('stoped', searchArray.length, containsPoint(searchArray.map(x => x.point), goal), searchArray[searchArray.length - 1], goal);
+    const path=searchArray[searchArray.length - 1] && searchArray[searchArray.length - 1].path
+    path.shift()
+    path.push(goal)
 
     //searchArray.filter(({ point}) => equalsPoint(point, goal))
-    return (searchArray[searchArray.length - 1] && searchArray[searchArray.length - 1].path) || []
+    return path || []
 }
 
 function containsPoint(points: point[], [pL, pC]: point): boolean {
@@ -143,20 +146,21 @@ export default class game {
         const nextPosPieceC = this.map[posL][nextPosC]
         const nextPosPieceD = this.map[nextPosLD][nextPosCD]
 
-        if (newDirL !== 0 && nextPosPieceL !== 1) {
+        if(!equalsPoint(this.moveHistory[this.moveHistory.length-1],this.position)){
             this.moveHistory.push(this.position)
+        }
+        
+        if (newDirL !== 0 && nextPosPieceL !== 1) {
             this.position = [nextPosL, posC]
             this.direction = [newDirL, 0]
             this.map[nextPosL][posC] = 0
         }
         else if (newDirC !== 0 && nextPosPieceC !== 1) {
-            this.moveHistory.push(this.position)
             this.position = [posL, nextPosC]
             this.direction = [0, newDirC]
             this.map[posL][nextPosC] = 0
         }
         else if (nextPosPieceD !== 1) {
-            this.moveHistory.push(this.position)
             this.position = [nextPosLD, nextPosCD]
             this.map[nextPosLD][nextPosCD] = 0
             status = 'blocked'
@@ -165,8 +169,8 @@ export default class game {
         const path = getPath(this.grubbers[0], this.position, this.map)
         console.log(`[${path.map(([x, y]) => '[' + x + ',' + y + ']')}]`, this.position)
 
-        this.grubbers[0] = path.length > 1 ? path[1] : this.position;
-        this.grubbers[1] = this.moveHistory.shift() || this.position
+        this.grubbers[0] = path[0]
+        this.grubbers[1] = this.moveHistory.shift() || this.grubbers[1]
 
         return status
     }
