@@ -98,7 +98,7 @@
     width: calc(50% - 7px);
 }
 
-.pacChomperWrapper{
+.pacCreatureWrapper{
     position: absolute;
     transition: all 0.2s;
     transition-delay: 0s;
@@ -109,7 +109,8 @@
 }
 
 .pacChomperOpen,
-.pacChomperClosed{
+.pacChomperClosed,
+.pacGrubber{
     transition: all 0.2s;
     transition-delay: 0s;
     border-radius: 50%;
@@ -120,4 +121,16 @@
 
 .pacChomperOpen{
     clip-path: polygon(100% 0, 100% 17%, 44% 53%, 100% 83%, 100% 100%, 0 100%, 0 0);
+}
+
+.pacGrubber{
+    clip-path: polygon(14% 9%, 52% 0, 89% 12%, 100% 70%, 83% 100%, 65% 82%, 52% 100%, 37% 84%, 20% 100%, 0 68%);
+}
+
+.pacGrubber0{
+    background-color: teal;
+}
+
+.pacGrubber1{
+    background-color: red;
 }

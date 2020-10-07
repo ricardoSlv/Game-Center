@@ -75,7 +75,7 @@ export default function PacmanDraw() {
                                     />
                                 )}
                             </div>)}
-                        <div className={styles.pacChomperWrapper}
+                        <div className={styles.pacCreatureWrapper}
                             style={{
                                 top: `calc(100%* ${board.current.position[0]} / 27`,
                                 left: `calc(100%* ${board.current.position[1]} / 21`,
@@ -84,7 +84,24 @@ export default function PacmanDraw() {
                         >
                             <div className={open ? styles.pacChomperOpen : styles.pacChomperClosed} />
                         </div>
+                        <div className={styles.pacCreatureWrapper}
+                            style={{
+                                top: `calc(100%* ${board.current.grubbers[0][0]} / 27`,
+                                left: `calc(100%* ${board.current.grubbers[0][1]} / 21`,
+                            }}
+                        >
+                            <div className={styles.pacGrubber0+' '+styles.pacGrubber} />
+                        </div>
+                        <div className={styles.pacCreatureWrapper}
+                            style={{
+                                top: `calc(100%* ${board.current.grubbers[1][0]} / 27`,
+                                left: `calc(100%* ${board.current.grubbers[1][1]} / 21`,
+                            }}
+                        >
+                            <div className={styles.pacGrubber1+' '+styles.pacGrubber} />
+                        </div>
                     </div>
+                    
                 </div>
             </GameBoard>
             <GameSideBar>
