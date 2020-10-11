@@ -1,9 +1,0 @@
-.navBar{
-    display: flex;
-    font-size: 17px;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 25px 65px 25px 45px;
-    font-weight: 300;
-    letter-spacing: 0.07ch;
-}

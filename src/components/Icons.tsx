@@ -1,14 +1,19 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
+import styled from '@emotion/styled'
 
-import styles from './Icons.module.css'
-
+const IconWrapper= styled.div`
+    filter: grayscale(100%) brightness(120%) opacity(0.8);
+    transition: 0.7s;
+    &:hover {filter: grayscale(20%);}
+`
 
 export function SnakeIcon(props:{scale:number}) {
     return (
         //https://www.flaticon.com/free-icon/snake_616487
         //From https://www.freepik.com/
-        <div className={styles.greyFilter}>
-            <svg version="1.1" id="Capa_1"
+        <IconWrapper>
+            <svg version="1.1" 
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
                 y="0px"
@@ -49,7 +54,7 @@ export function SnakeIcon(props:{scale:number}) {
                 <path fill="#4B3F4E" d="M144.204,94.34c-5.609,0-10.155-4.546-10.155-10.155v-8.124c0-5.609,4.546-10.155,10.155-10.155
             s10.155,4.546,10.155,10.155v8.124C154.359,89.794,149.813,94.34,144.204,94.34z"/>
             </svg>
-        </div>
+        </IconWrapper>
     )
 }
 
@@ -57,7 +62,7 @@ export function TetrisIcon(props:{scale:number}) {
     return (
         //https://www.flaticon.com/free-icon/tetris_404362?term=tetris&page=2&position=2
         //From https://www.freepik.com/
-        <div className={styles.greyFilter}>
+        <IconWrapper>
             <svg version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
                 height={`${props.scale*130}`}
@@ -73,14 +78,15 @@ export function TetrisIcon(props:{scale:number}) {
                 <rect y="409.6" fill="#FF648D" width="409.6" height="102.4" />
                 <polygon fill="#FD4D21" points="409.6,102.4 409.6,0 307.2,0 307.2,204.8 409.6,204.8 409.6,307.2 512,307.2 512,102.4 " />
             </svg>
-        </div >
+        </IconWrapper >
     )
 }
 
 export function PacManIcon(props:{scale:number}) {
+    
     return (
         //https://svgsilh.com/image/151558.html
-        <div className={styles.greyFilter}>
+        <IconWrapper>
             <svg version="1.0" 
                 xmlns="http://www.w3.org/2000/svg"
                 width={`${props.scale*160}`} 
@@ -113,6 +119,6 @@ export function PacManIcon(props:{scale:number}) {
                     -109 45 -138 51 -73 15 -226 13 -292 -5z"/>
                 </g>
             </svg>
-        </div>
+        </IconWrapper>
     )
 }

@@ -5,9 +5,9 @@ import useInputBuffer from '../../hooks/useInputBuffer'
 
 import styles from './PacmanGame.module.css'
 
-import GameWrapper from '../../components/UI/GameWrapper/GameWrapper'
-import GameBoard from '../../components/UI/GameBoard/GameBoard'
-import GameSideBar from '../../components/UI/GameSideBar/GameSideBar'
+import GameWrapper from '../../components/UI/GameWrapper'
+import GameBoard from '../../components/UI/GameBoard'
+import GameSideBar from '../../components/UI/GameSideBar'
 import Square from './Square'
 
 

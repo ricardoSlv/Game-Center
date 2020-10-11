@@ -1,13 +1,25 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 
-import NavItem from './../NavItem/NavItem'
+import NavItem from './NavItem/NavItem'
+import styled from "@emotion/styled";
 
-import styles from './Footer.module.css'
+
+const FooterWrapper = styled.footer`
+  width: 100%;
+  padding-bottom: 5px;
+  background: linear-gradient(0deg,rgb(51, 8, 103,0.4),rgb(49, 165, 185,0.005));
+`;
+const ItemFlex = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+`;
 
 export default function Footer() {
     return (
-        <footer className={styles.footer}>
-            <div className={styles.sideFlex}>
+        <FooterWrapper >
+            <ItemFlex >
                 <NavItem text='Home' link='/'/>
                 <NavItem text='Get Started' link='/get-started'/>
                 <NavItem text='Leaderboard' link='/leaderboard'/>
@@ -17,7 +29,7 @@ export default function Footer() {
                     Leave a <span role="img" aria-label="Like">👍</span>
                 </span>
                 <NavItem text=' ' link='https://github.com/ricardoSlv/Game-Center' github />
-            </div>
-        </footer>
+            </ItemFlex>
+        </FooterWrapper>
     )
 }

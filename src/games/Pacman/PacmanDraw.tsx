@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 
-import {initialMap} from '../utils/game'
+import {initialMap} from './utils/game'
 
-import styles from './../PacmanGame.module.css'
+import styles from './PacmanGame.module.css'
 
-import GameWrapper from '../../../components/UI/GameWrapper/GameWrapper'
-import GameBoard from '../../../components/UI/GameBoard/GameBoard'
-import GameSideBar from '../../../components/UI/GameSideBar/GameSideBar'
-import Square from '../Square'
+import GameWrapper from '../../components/UI/GameWrapper'
+import GameBoard from '../../components/UI/GameBoard'
+import GameSideBar from '../../components/UI/GameSideBar'
+import Square from './Square'
 
 
 function dup(arr: number[][]) {

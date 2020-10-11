@@ -1,30 +1,66 @@
-import React from 'react'
-import {Link} from "react-router-dom";
-import HeroButton from '../../../components/HeroButon/HeroButton'
-import { SnakeIcon, TetrisIcon, PacManIcon } from '../../../components/Icons/Icons'
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
+import styled from '@emotion/styled'
 
-import styles from './HeroZone.module.css'
+import { Link } from "react-router-dom";
+import HeroButton from '../../../components/HeroButon/HeroButton'
+import { SnakeIcon, TetrisIcon, PacManIcon } from '../../../components/Icons'
+
+const Header = styled.header`
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: snow;
+    font-size: 3rem;
+`
+const HeroTitle = styled.h1`
+    font-weight: 400;
+    margin: 0px;
+    padding: 0 1em;
+    letter-spacing: 0.2ch;
+`
+const SideFlex = styled.div`
+    margin-top: '1rem';
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    & > * { 
+        margin: 2rem;
+    }
+`
+const HeroDesc = styled.h2`
+    font-weight: 300;
+    margin: 0px;
+    padding: 0 1em;
+    font-size: 0.7em;
+`
 
 export default function Herozone() {
     return (
-        <header className={styles.header}>
-            <h1 className={styles.heroTitle}>Welcome to Games</h1>
-            <div className={styles.sideFlex}>
+        <Header>
+            <HeroTitle>
+                Welcome to Games
+            </HeroTitle>
+            <SideFlex>
                 <Link to="/snake">
-                    <SnakeIcon scale={1}/>
+                    <SnakeIcon scale={1} />
                 </Link>
                 <Link to="/tetris">
-                    <TetrisIcon scale={1}/>
+                    <TetrisIcon scale={1} />
                 </Link>
                 <Link to="/pacman">
-                    <PacManIcon scale={1}/>
+                    <PacManIcon scale={1} />
                 </Link>
-            </div>
-            <h2 className={styles.heroDesc} >They kind of work but sometimes they don't</h2>
-            <div className={styles.sideFlex+' '+styles.margTop}>
-                <HeroButton text="Login"/>
-                <HeroButton text="Signup"/>
-            </div>
-        </header>
+            </SideFlex>
+            <HeroDesc>
+                They kind of work but sometimes they don't
+            </HeroDesc>
+            <SideFlex>
+                <HeroButton text="Login" />
+                <HeroButton text="Signup" />
+            </SideFlex>
+        </Header>
     )
 }

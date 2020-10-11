@@ -6,10 +6,10 @@ import game from './utils/game'
 import styles from './SnakeGame.module.css'
 
 import RecordPrompt from './../../components/RecordPrompt/RecordPrompt'
-import GameWrapper from './../../components/UI/GameWrapper/GameWrapper'
-import GameSideBar from './../../components/UI/GameSideBar/GameSideBar'
-import GameBoard from './../../components/UI/GameBoard/GameBoard'
-import Backdrop from './../../components/UI/Backdrop/Backdrop'
+import GameWrapper from '../../components/UI/GameWrapper'
+import GameSideBar from '../../components/UI/GameSideBar'
+import GameBoard from '../../components/UI/GameBoard'
+import Backdrop from '../../components/UI/Backdrop'
 
 type color = 'Green' | 'Red' | 'Blue' | 'Orange' | 'Snow' | 'Black' | 'Brown' | 'Gray'
 

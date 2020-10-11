@@ -1,5 +1,0 @@
-.layoutGrid{
-    display: grid;
-    height: 100vh;
-    grid-template-rows: 70px calc(100vh - 115px) 45px;
-}
