@@ -10,8 +10,8 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 import Layout from './components/Layout';
-import Welcome from './pages/Welcome/Welcome'
-import Leaderboard from './pages/Leaderboard/Leaderboard'
+import Welcome from './pages/Welcome'
+import Leaderboard from './pages/Leaderboard'
 import SnakeGame from './games/Snake/SnakeGame'
 import PacmanDraw from './games/Pacman/PacmanDraw';
 import PacmanGame from './games/Pacman/PacmanGame';
